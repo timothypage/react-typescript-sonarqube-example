@@ -3,6 +3,7 @@ import './App.css';
 
 import {FancyDie} from './models'
 import DieComponent from './Die'
+import Mice from './Mice'
 
 const initialDice: Array<FancyDie> = [
   {sides: 20, value: null},
@@ -30,6 +31,7 @@ const App: React.FC = () => {
           Roll!
         </button>
       </div>
+      <Mice />
     </div>
   );
 }

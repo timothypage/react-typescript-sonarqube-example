@@ -18,14 +18,15 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "sonar": "react-scripts test --coverage --testResultsProcessor jest-sonar-reporter",
+    "sonar": "react-scripts test --coverage --watchAll false --testResultsProcessor jest-sonar-reporter",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
   "jestSonar": {
-    "reportFile": "sonar-report-tz.xml",
+    "reportPath": "coverage",
+    "reportFile": "test-report.xml",
     "indent": 4
   },
   "browserslist": {
