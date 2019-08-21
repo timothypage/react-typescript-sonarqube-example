@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
 
+import {FancyDie} from './models'
+import DieComponent from './Die'
+
+const initialDice: Array<FancyDie> = [
+  {sides: 20, value: null},
+  {sides: 6, value: null},
+  {sides: 8, value: null, color: '#ffff00'}
+]
+
 const App: React.FC = () => {
+  const [dice, setDice] = useState(initialDice)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      {dice.map((die, index) => <DieComponent key={index} {...die} />)}
+
+      <div className="roll">
+        <button onClick={() => {
+          setDice(
+            dice.map(die => ({
+              ...die,
+              value: Math.floor(Math.random() * die.sides) + 1
+            }))
+          )
+        }}
         >
-          Learn React
-        </a>
-      </header>
+          Roll!
+        </button>
+      </div>
     </div>
   );
 }
